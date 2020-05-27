@@ -9,5 +9,4 @@ public class TwodbsApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TwodbsApplication.class, args);
 	}
-
 }
