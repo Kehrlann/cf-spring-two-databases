@@ -1,10 +1,10 @@
 version: '3.1'
 
 services:
-    datalake:
-        image: postgres
-        environment:
-            POSTGRES_PASSWORD: admin
-            POSTGRES_DB: cats
-        ports:
-            - 54321:5432
+  datalake:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: cats
+    ports:
+      - 5432:5432

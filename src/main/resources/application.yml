@@ -1,8 +1,8 @@
 spring:
   jpa:
-    properties.hibernate.dialect:  org.hibernate.dialect.PostgreSQLDialect
+    properties.hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
     hibernate.ddl-auto: none
   datasource:
-    url: jdbc:postgresql://localhost:54321/cats
+    url: jdbc:postgresql://localhost:5432/cats
     username: postgres
     password: admin
