@@ -1,10 +1,12 @@
 version: '3.1'
 
 services:
-  datalake:
-    image: postgres
+  database:
+    image: postgres:12.3
+    volumes:
+    - ./postgres-init:/docker-entrypoint-initdb.d
     environment:
       POSTGRES_PASSWORD: admin
-      POSTGRES_DB: cats
+      POSTGRES_MULTIPLE_DATABASES: cats,dogs
     ports:
       - 5432:5432
