@@ -1,0 +1,10 @@
+applications:
+- name: cats-and-dogs
+  path: build/libs/twodbs-0.0.1-SNAPSHOT.jar
+  memory: 1G
+  #  env:
+  #    JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ }}'
+  # buildpacks:
+  # - java_buildpack
+  services:
+  - cats-db
