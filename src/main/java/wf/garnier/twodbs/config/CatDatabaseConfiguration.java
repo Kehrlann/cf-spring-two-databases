@@ -28,11 +28,10 @@ public class CatDatabaseConfiguration {
 
     @Bean
     @Primary
-    public DataSourceProperties catsDataSourceProperties(LocalDatabaseCredentials credentials) {
-        return credentials.cats();
-//        return credentials
-//                .map(LocalDatabaseCredentials::getDatalakeProperties)
-//                .orElseGet(() -> CfDatabaseCredentials.getDataSourcePropertiesForService("datalake-db"));
+    public DataSourceProperties catsDataSourceProperties(Optional<LocalDatabaseCredentials> credentials) {
+        return credentials
+                .map(LocalDatabaseCredentials::cats)
+                .orElseGet(() -> CfDatabaseCredentials.getDataSourcePropertiesForService("cats-db"));
     }
 
     @Bean

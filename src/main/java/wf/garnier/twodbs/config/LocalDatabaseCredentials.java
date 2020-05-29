@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Setter
 @Component
+@Profile("!cloud")
 @ConfigurationProperties(prefix = "app.datasource")
 public class LocalDatabaseCredentials {
     @NestedConfigurationProperty

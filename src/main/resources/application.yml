@@ -13,3 +13,13 @@ app:
       url: jdbc:postgresql://localhost:5432/cats
       username: postgres
       password: admin
+
+
+---
+spring:
+  profiles: cloud
+
+app:
+  services:
+    cats: ""
+    dogs: ""
