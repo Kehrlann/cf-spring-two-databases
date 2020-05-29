@@ -20,52 +20,49 @@ import java.util.Optional;
 
 @Configuration
 @EnableJpaRepositories(
-        basePackages = {"wf.garnier.twodbs.cats"},
-        entityManagerFactoryRef = "catsEntityManager",
-        transactionManagerRef = "catsTransactionManager"
+        basePackages = {"wf.garnier.twodbs.dogs"},
+        entityManagerFactoryRef = "dogsEntityManager",
+        transactionManagerRef = "dogsTransactionManager"
 )
-public class CatDatabaseConfiguration {
+public class DogDatabaseConfiguration {
 
     @Bean
-    @Primary
-    public DataSourceProperties catsDataSourceProperties(Optional<LocalDatabaseCredentials> credentials) {
+    public DataSourceProperties dogsDataSourceProperties(Optional<LocalDatabaseCredentials> credentials) {
         return credentials
-                .map(LocalDatabaseCredentials::cats)
-                .orElseGet(() -> CfDatabaseCredentials.getDataSourcePropertiesForService("cats-db"));
+                .map(LocalDatabaseCredentials::dogs)
+                .orElseGet(() -> CfDatabaseCredentials.getDataSourcePropertiesForService("dogs-db"));
     }
 
     @Bean
-    @Primary
-    public HikariDataSource catsDataSource(
-            @Qualifier("catsDataSourceProperties") DataSourceProperties catsDataSourceProperties
+    public HikariDataSource dogsDataSource(
+            @Qualifier("dogsDataSourceProperties") DataSourceProperties dogsDataSourceProperties
     ) {
-        return catsDataSourceProperties
+        return dogsDataSourceProperties
                 .initializeDataSourceBuilder()
                 .type(HikariDataSource.class)
                 .build();
     }
 
     @Bean
-    @Primary
-    public LocalContainerEntityManagerFactoryBean catsEntityManager(
-            @Qualifier("catsDataSource") DataSource catsDataSource,
+    public LocalContainerEntityManagerFactoryBean dogsEntityManager(
+            @Qualifier("dogsDataSource") DataSource dogsDataSource,
             EntityManagerFactoryBuilder emFactoryBuilder
     ) {
         Map<String, String> properties = new HashMap<>();
         return emFactoryBuilder
-                .dataSource(catsDataSource)
-                .packages("wf.garnier.twodbs.cats")
-                .persistenceUnit("catsEntityManager")
+                .dataSource(dogsDataSource)
+                .packages("wf.garnier.twodbs.dogs")
+                .persistenceUnit("dogsEntityManager")
                 .properties(properties)
                 .build();
     }
 
     @Bean
-    public PlatformTransactionManager catsTransactionManager(
-            @Qualifier("catsEntityManager") EntityManagerFactory catsEntityManager
+    public PlatformTransactionManager dogsTransactionManager(
+            @Qualifier("dogsEntityManager") EntityManagerFactory dogsEntityManager
     ) {
         JpaTransactionManager txManager = new JpaTransactionManager();
-        txManager.setEntityManagerFactory(catsEntityManager);
+        txManager.setEntityManagerFactory(dogsEntityManager);
         return txManager;
     }
 }

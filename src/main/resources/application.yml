@@ -10,7 +10,7 @@ app:
       # driverClassName
       # platform
     dogs:
-      url: jdbc:postgresql://localhost:5432/cats
+      url: jdbc:postgresql://localhost:5432/dogs
       username: postgres
       password: admin
 

@@ -1,4 +1,4 @@
-package wf.garnier.twodbs.cats;
+package wf.garnier.twodbs.dogs;
 
 import lombok.*;
 import wf.garnier.twodbs.Pet;
@@ -14,7 +14,7 @@ import javax.persistence.Id;
 @With
 @NoArgsConstructor
 @AllArgsConstructor
-public class Cat implements Pet {
+public class Dog implements Pet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -22,6 +22,6 @@ public class Cat implements Pet {
 
     @Override
     public String getType() {
-        return "cat";
+        return "dog";
     }
 }
