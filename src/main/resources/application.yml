@@ -1,8 +1,15 @@
 spring:
-  jpa:
-    properties.hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
-    hibernate.ddl-auto: none
+  flyway:
+    locations: "classpath:db/cats/migration"
+app:
   datasource:
-    url: jdbc:postgresql://localhost:5432/cats
-    username: postgres
-    password: admin
+    cats:
+      url: jdbc:postgresql://localhost:5432/cats
+      username: postgres
+      password: admin
+      # driverClassName
+      # platform
+    dogs:
+      url: jdbc:postgresql://localhost:5432/cats
+      username: postgres
+      password: admin
