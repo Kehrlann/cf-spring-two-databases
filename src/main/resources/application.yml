@@ -1,25 +1,10 @@
-spring:
-  flyway:
-    locations: "classpath:db/cats/migration"
 app:
   datasource:
     cats:
       url: jdbc:postgresql://localhost:5432/cats
       username: postgres
       password: admin
-      # driverClassName
-      # platform
     dogs:
       url: jdbc:postgresql://localhost:5432/dogs
       username: postgres
       password: admin
-
-
----
-spring:
-  profiles: cloud
-
-app:
-  services:
-    cats: ""
-    dogs: ""
